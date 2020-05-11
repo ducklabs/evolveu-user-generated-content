@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script></script>
+</head>
+<body>
+<header>
+    <h1> Day 3: Accessing an API </h1>
+    <h2> The GET</h2>
+</header>
+<main>
+    <table id="Posts">
+
+    </table>
+</main>
+<footer>
+
+</footer>
+
+<script>
+    const table = document.getElementById('Posts')
+    const thead = table.createTHead()
+    const headerRow = thead.insertRow()
+    headerRow.innerHTML = '<td>HEADER</td>'
+
+    fetch('http://localhost:3000/api/posts')
+        .then(response => response.json())
+        .then(data => console.log(data));
+</script>
+</body>
+</html>

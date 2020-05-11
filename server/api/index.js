@@ -1,19 +1,27 @@
 const express = require('express')
-const database = require('../database')
 const apiRouter = express.Router()
 
-function findAllPosts(request, response) {
-  let allPosts = database.findAllPosts()
-  response.send(allPosts)
-}
+const database = require('../database')
 
-function addNewPost(request, response) {
-  console.log('saving post', request.body)
-  database.addNewPost(request.body)
-  response.send(200)
-}
+const setupV1Routes = (apiRouter) => {
+  function findAllPosts(request, response) {
+    let allPosts = database.findAllPosts()
+    response.send(allPosts)
+  }
 
-apiRouter.get('/posts', findAllPosts)
-apiRouter.post('/addPost', addNewPost)
+  function addNewPost(request, response) {
+    console.log('saving post', request.body)
+    database.addPost(request.body)
+    response.send(200)
+  }
+
+  apiRouter.get('/posts', findAllPosts)
+  apiRouter.post('/addPost', addNewPost)
+};
+
+
+setupV1Routes(apiRouter);
+// setupV2Routes(apiRouter);
+
 
 module.exports = apiRouter

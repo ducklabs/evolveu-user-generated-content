@@ -7,7 +7,6 @@ app.use(express.json())
 app.use('/api', api)
 
 app.use('/', express.static('../web1'))
-
 app.use('/day3', express.static('../web3'))
 
 const port = process.env.PORT || 3000
