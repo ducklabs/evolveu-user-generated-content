@@ -22,7 +22,7 @@
     const headerRow = thead.insertRow()
     headerRow.innerHTML = '<td>HEADER</td>'
 
-    fetch('http://localhost:3000/api/posts')
+    fetch('http://localhost:3000/api/v2/posts')
         .then(response => response.json())
         .then(data => console.log(data));
 </script>

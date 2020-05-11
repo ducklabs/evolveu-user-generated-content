@@ -1,0 +1,50 @@
+<html>
+<head>
+    <script></script>
+</head>
+<body>
+<header>
+    <h1> Day 3: Accessing an API </h1>
+    <h2> The GET</h2>
+</header>
+<main>
+    <table id="Posts">
+    <thead>
+    <tr>
+        <td>
+            POSTS
+        </td>
+    </tr>
+    </thead>
+    </table>
+</main>
+<footer>
+
+</footer>
+
+<script>
+    // Take the posts received from the server and add it to the body
+    const addPostsToTable = (posts) => {
+        const table = document.getElementById('Posts')
+        const tblBody = document.createElement("tbody")
+
+        posts.forEach(function (post, index) {
+            const row = document.createElement("tr")
+            const cell = document.createElement("td")
+            const cellText = document.createTextNode(post)
+            cell.appendChild(cellText)
+            row.appendChild(cell)
+            tblBody.appendChild(row)
+        })
+
+        table.appendChild(tblBody)
+    }
+
+    // GET THE DATA FROM THE SERVER
+    fetch('http://localhost:3000/api/v2/posts')
+        .then(response => response.json())
+        .then(data => addPostsToTable(data))
+
+</script>
+</body>
+</html>
