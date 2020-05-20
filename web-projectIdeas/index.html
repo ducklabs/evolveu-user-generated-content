@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/project-ideas.css" />
+    <script src="scripts/jquery-3.5.1.js"></script>
+    <script src="scripts/project-ideas.js"></script>
+  </head>
+  <body>
+    <div class="header-bar">
+      <img class="header-bar-logo" src="images/EvolveU-logo-white.png" alt="EvolveU logo"/>
+      <div class="header-bar-options"></div>
+    </div>
+
+    <h2>Project Idea Board</h2>
+    <div id="projectIdeasArea">
+    </div>
+
+    <div>
+      <h2>Enter New Idea</h2>
+      <div class="entry-form">
+        <div class="entry-form-field-label">Title: </div>          
+        <input id="projectTitle" oninput="enablePostButtonIfApplicable()" /> 
+        <div class="entry-form-field-label">Description: </div>
+        <textarea id="projectDescription" rows="5" oninput="enablePostButtonIfApplicable()"></textarea>
+        <div class="entry-form-footer">
+          <div class="entry-form-field-label">
+            Contact email or discord handle: 
+            <input id="projectContact" oninput="enablePostButtonIfApplicable()" />
+          </div>
+          <button id="postProjectButton" onclick="postButtonPressed()" disabled> POST IT! </button> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
