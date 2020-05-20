@@ -16,7 +16,7 @@ const setupV1Routes = (apiRouter) => {
   function addNewPost(request, response) {
     console.log('saving post', request.body)
     database.addPost(request.body)
-    response.send(200)
+    response.sendStatus(200)
   }
 
   // Routing
@@ -32,13 +32,13 @@ const setupV2Routes = (apiRouter) => {
   // Controller Functions
   function findAllPosts(request, response) {
     let allPosts = database.findAllPosts()
-    response.send(allPosts)
+    response.sendStatus(allPosts)
   }
 
   function addNewPost(request, response) {
     console.log('saving post', request.body)
     database.addPost(request.body)
-    response.send(200)
+    response.sendStatus(200)
   }
 
   // Middleware
