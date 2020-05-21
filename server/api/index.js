@@ -17,7 +17,7 @@ const setupV1Routes = (apiRouter) => {
   function addNewPost(request, response) {
     console.log('saving post', request.body)
     database.addPost(request.body)
-    response.send(200)
+    response.sendStatus(200)
   }
 
   // Routing
@@ -27,10 +27,6 @@ const setupV1Routes = (apiRouter) => {
 
   apiRouter.use('/v1', v1Router)
 };
-
-
-
-
 
 const apiRouter = Router()
 setupV1Routes(apiRouter)

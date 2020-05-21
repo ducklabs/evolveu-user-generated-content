@@ -2,9 +2,10 @@
   "name": "evolveu-user-generated-content",
   "version": "1.0.0",
   "description": "This is an empty readme file, but information about getting the app running for developement and deployment would normally be right here!",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "npm run test:server",
+    "start": "npm run start:server",
     "test:server": "cd server && npm test && cd ..",
     "start:server": "cd server && npm start"
   },

@@ -1,39 +1,63 @@
 <!DOCTYPE html>
+<!--height 100% takes up all available room on the page-->
+<style>
+    a {color: green; background-color: hotpink}
+</style>
 <html style="background-color: red; height:100%;">
     <head>
+        <!-- notice title changes name of the tab in your browser-->
         <title>Evolve U Messaging</title>
     </head>
-    <body style="height: 100%; background-color: blueviolet;"> <!-- margin here! -->
-        <div style="display: flex; flex-direction: column; justify-content: flex-start; height: 100%; background-color: pink;">
-            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+
+    <!-- ooo padding, and colors. Still 100% height -->
+    <body style="height: 100%; background-color: blueviolet; margin: 25px; padding: 15px"> 
+        <!-- margin here! -->
+        <!-- first flex display, what happens if it's issing-->
+        <div style="align-items: space-between; height: 100%; background-color: pink; padding: 30px">
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly;" class='page header'>
+                <!-- image -->
                 <img height="20" src="https://static1.squarespace.com/static/5a1309bebe42d6a63eacfb93/t/5a641afee4966be29452e3e2/1589211990164/?format=1500w"/>
-                <h3 style='left:auto; right: auto'>Evolve U Discussion</h3>
+                <!-- fonts -->
+                <h3 style='font-family: fantasy; font-weight:bolder'>Evolve U Discussion</h3>
+                <!-- on click -->
                 <div onclick="alert('Login Here')">Login</div>
             </div>
-            <div style="display: flex; flex-direction: column; height: 100%; justify-content: flex-start; background-color: lightyellow">
-                <div style="display: flex; flex-direction: column; justify-content: center; background-color: teal">
+            <div style="height: 66%;  background-color: lightyellow; padding: 25px; margin: 12px">
+                <div style="display: flex; flex-direction: column; justify-content: center; background-color: teal;  ">
+                    <!--h3?-->
                     <h3>Latest Message</h3>
+                    <br/>
+                    <!-- p -->
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut consequat semper viverra nam libero justo laoreet. Consectetur adipiscing elit pellentesque habitant. Dolor magna eget est lorem ipsum dolor. Proin sed libero enim sed faucibus turpis. Sed libero enim sed faucibus turpis in eu. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce. Sit amet volutpat consequat mauris nunc congue nisi. Nisl tincidunt eget nullam non nisi est sit amet facilisis. Cursus metus aliquam eleifend mi in nulla. Nullam ac tortor vitae purus. Adipiscing elit ut aliquam purus sit amet. Metus aliquam eleifend mi in nulla. Lectus proin nibh nisl condimentum id venenatis a condimentum. At volutpat diam ut venenatis tellus in metus.
                     </p>
                 </div>
-                <div style="padding: 25px">
+
+                <!-- border -->
+                <div style="padding: 25px; border: thick solid black; background-color: white; color: powderblue; margin:15px">
+                    <!-- br -->
                     Create New Message<br/>
-                    <span>
-                        Title:
-                        <input type="text"/>
-                    </span>
-                    <div>
-                        Message:
+                    <!-- flex row-->
+                    <div style="display: flex; flex-direction: row; justify-content: flex-start;">
+                        <!-- set width so Title: lines up with Message:-->
+                        <div style="width: 150px; background-color: #f1f1f1;">Title:</div>
+                        <input style="width: 200px; background-color: #f7f7ff" type="text"/>
                     </div>
-                    <button style="background-color: red; color: white">Cancel</button> 
+                    <div style="display: flex; flex-direction: row; justify-content: flex-start;">
+                        <div style="width:150px; background-color: #f1f1f1">Message:</div>
+                        <textarea rows='15' style="width:200px; background-color: #f7f7ff"></textarea>
+                    </div>
                     <button style="background-color: green; color: white">Submit</button> 
                 </div>
             </div>
         </div>
     </body>
+
+    <!-- fixed positioning... with bottom 0 drops it to the bottom of its most recent container -->
     <footer style="position: fixed; bottom: 0; width: 100%; background-color: lightblue; height: 40px; display: flex; flex-direction: row; justify-content: space-evenly; padding: 25px">
+       <!-- a tag to redirect to a page-->
         <a href="https://www.evolveu.ca/">About Us</a>
+        <!-- a tag to redirect to send an email -->
         <a href="mailto:chris@ducklabs.ca">Report a Bug</a>
     </footer>
 </html>
