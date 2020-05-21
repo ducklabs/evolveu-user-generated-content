@@ -12,13 +12,14 @@ const setupV2Routes = (apiRouter) => {
     }
 
     function addNewPost(request, response) {
-        console.log('saving post', request.body)
-        database.addPost(request.body)
+        const requestBody = request.body
+        console.log('saving post', requestBody)
+        database.addPost(requestBody)
         response.send(200)
     }
 
     // Middleware
-    const textParser = bodyParser.text()
+    const textParser = bodyParser.json()
 
     // Routing
     const router = express.Router()
