@@ -1,5 +1,6 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+
+const setupV2Routes = require('./setupv2Routes')
 
 const Router = express.Router
 
@@ -27,30 +28,7 @@ const setupV1Routes = (apiRouter) => {
   apiRouter.use('/v1', v1Router)
 };
 
-const setupV2Routes = (apiRouter) => {
 
-  // Controller Functions
-  function findAllPosts(request, response) {
-    let allPosts = database.findAllPosts()
-    response.send(allPosts)
-  }
-
-  function addNewPost(request, response) {
-    console.log('saving post', request.body)
-    database.addPost(request.body)
-    response.send(200)
-  }
-
-  // Middleware
-  const textParser = bodyParser.text()
-
-  // Routing
-  const router = Router()
-  router.get('/posts', findAllPosts)
-  router.post('/addPost', textParser, addNewPost)
-
-  apiRouter.use('/v2', router)
-};
 
 
 
