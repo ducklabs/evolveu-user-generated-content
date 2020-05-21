@@ -1,42 +1,50 @@
 <html>
-<head>
+  <head>
     <script></script>
-</head>
-<body>
-<header>
-    <h1> Day 3: Accessing an API </h1>
-    <h2> The GET</h2>
-</header>
-<main>
-    <div style="padding: 25px">
-        Create New Message<br/>
-        <span>Message:
-            <input type="text"/>
+  </head>
+  <body>
+    <header>
+      <h1>Day 3: Accessing an API</h1>
+      <h2>The POST</h2>
+    </header>
+    <main>
+      <div style="padding: 25px;">
+        Create New Message<br />
+        <span
+          >Message:
+          <input id="messageText" type="text" />
         </span>
-        <button style="background-color: green; color: white">Submit</button>
-    </div>
-</main>
-<footer>
+        <button
+          style="background-color: green; color: white;"
+          onclick="sendMessage()"
+        >
+          Submit
+        </button>
+      </div>
+    </main>
+    <footer></footer>
+    <!--HERE WE WILL USE THE API TO SEND A POST UP TO THE SERVER-->
+    <script>
+      function getMessageText() {
+        return document.getElementById("messageText").value;
+      }
 
-</footer>
-<!--HERE WE WILL USE THE API TO SEND A POST UP TO THE SERVER-->
-<script>
-    fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: 'Hello' // body data type must match "Content-Type" header
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
+      function sendMessage() {
+        const url = "http://localhost:3000/api/v2/addPost";
+        const message = {
+          messageText: getMessageText(),
+          author: "Anonymous",
+          messageDate: new Date().toISOString().substring(0, 10),
+        };
 
-</script>
-</body>
+        fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(message),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+      }
+    </script>
+  </body>
 </html>

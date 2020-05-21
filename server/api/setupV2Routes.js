@@ -15,7 +15,7 @@ const setupV2Routes = (apiRouter) => {
         const requestBody = request.body
         console.log('saving post', requestBody)
         database.addPost(requestBody)
-        response.send(200)
+        response.json(requestBody)
     }
 
     // Middleware
