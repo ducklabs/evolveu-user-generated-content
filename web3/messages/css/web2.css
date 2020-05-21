@@ -1,0 +1,87 @@
+body {
+    font-family: sans-serif;
+    color: #444543;
+    background: #ffffff;
+}
+
+.header-bar {
+    padding: 16px;
+    background: #444543;
+    color: #ffffff;
+}
+
+.header-bar-logo {
+    height: 24px;
+}
+
+.header-bar-options {
+    line-height: 24px;
+    vertical-align: middle;
+    float:right;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+h1 {
+    color: #1e90b4;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 16px;
+}
+
+h2 {
+    color: #1e90b4;
+    font-size: 16px;
+    font-weight: 800;
+    margin-left: 16px;
+}
+
+.message {
+    margin-left: 32px;
+    margin-right: 16px;
+    margin-top: 8px;
+    border-bottom:  1px solid;
+}
+
+.message-footer {
+    font-size: 12px;
+    font-style: italic;
+    text-align: right;
+}
+
+.entry-form {
+    margin-left: 32px;
+    margin-right: 16px;
+}
+
+.entry-form-footer {
+    margin-top: 8px;
+    text-align: right;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 8px;
+    font-family: sans-serif;
+    border-radius: 5px;
+}
+
+button {
+    height: 32px;
+    width: 128px;
+    background: #9ccb3b;
+    color: #ffffff;
+    font-weight: 700;
+    border-style: none;
+    border-radius: 50px;
+}
+
+button:disabled {
+    height: 32px;
+    width: 128px;
+    background: #aaaaaa;
+    color: #eeeeee;
+    font-weight: 700;
+    border-style: none;
+    border-radius: 50px;
+}
