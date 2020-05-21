@@ -11,10 +11,22 @@ const setupV2Routes = (apiRouter) => {
         response.send(allPosts)
     }
 
+    function addUserId(body) {
+        body.uid = new Date().getTime()
+    }
+
     function addNewPost(request, response) {
         const requestBody = request.body
+        addUserId(requestBody)
         console.log('saving post', requestBody)
         database.addPost(requestBody)
+        response.json(requestBody)
+    }
+
+
+    function updatePost(request, response) {
+        const requestBody = request.body
+        database.updatePost(requestBody)
         response.json(requestBody)
     }
 
@@ -25,6 +37,7 @@ const setupV2Routes = (apiRouter) => {
     const router = express.Router()
     router.get('/posts', findAllPosts)
     router.post('/addPost', textParser, addNewPost)
+    router.post('/updatePost', textParser, updatePost)
 
     apiRouter.use('/v2', router)
 };
