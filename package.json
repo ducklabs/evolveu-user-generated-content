@@ -19,7 +19,9 @@
     "url": "https://github.com/ducklabs/evolveu-user-generated-content/issues"
   },
   "homepage": "https://github.com/ducklabs/evolveu-user-generated-content#readme",
-  "dependencies": {},
+  "dependencies": {
+    "chai": "^4.2.0"
+  },
   "devDependencies": {
     "mocha": "^7.2.0"
   }
