@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/ducklabs/evolveu-user-generated-content/issues"
   },
-  "homepage": "https://github.com/ducklabs/evolveu-user-generated-content#readme"
+  "homepage": "https://github.com/ducklabs/evolveu-user-generated-content#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  }
 }
