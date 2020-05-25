@@ -126,8 +126,29 @@
 //                 {id: 8, name: 'tony', major: 'Interpretive Dance'}
 //             ])
 //         })
-//         it('can change an if statement into behavior dictionary', function(){
-//             // if ()
-//         })
+//          it ('can sum sales', function(){
+//              const salesPeople = [
+//                 {name: 'Chris', id: 7},
+//                 {name: 'Tony', id: 8}
+//                ]
+//          const products = [
+//              {name: 'Fish', price: 7},
+//              {name: 'Chips', price: 5 }
+//            ]
+//          const sales = [
+//              {salesPerson: 7, product: 'Fish'},
+//              {salesPerson: 7, product: 'Fish'},
+//              {salesPerson: 7, product: 'Chips'},
+//              {salesPerson: 8, product: 'Chips'},
+//          ]
+//
+//          var result      // feel free to use multiple lines but come up with a strategy, imagine there are thousands of data rows instead of less than 10
+//
+//          expect(result).to.eql(
+//              [
+//                  {name: 'Chris', sales: 19},
+//                  {name: 'Tony', sales: 5}
+//              ])
+//          })
 //     })
 // })
