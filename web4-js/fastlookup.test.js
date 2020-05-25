@@ -6,6 +6,13 @@ const students = [
     {id: 10, name: 'jen`'}
 ]
 
+const studentsToo = [
+    {id: 7, name: 'chris'}, 
+    {id: 13, name: 'chris'}, 
+    {id: 9, name: 'sheldon'},
+    {id: 10, name: 'jen`'}
+]
+
 const marks = [
     {studentid: 7, mark: 75},
     {studentid: 9, mark: 85}
@@ -32,5 +39,18 @@ describe('fast lookup object', function() {
                 {id: 10, name: 'jen`'}
             ]
         )
+    })
+    it('should handle conflicts', function(){
+        var dictionaryOfStudentNames = 
+        studentsToo.reduce(function(acc, newRecord){
+            acc[newRecord.name] = acc[newRecord.name] || []
+            acc[newRecord.name].push(newRecord)
+            return acc
+        }
+        , {})
+
+        var studentRecordsForChris = dictionaryOfStudentNames['chris']
+        const studentIdsForChris = studentRecordsForChris.map(r => r.id)
+        expect(studentIdsForChris).to.eql([7, 13])
     })
 })

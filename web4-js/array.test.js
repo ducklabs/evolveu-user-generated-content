@@ -87,5 +87,16 @@ describe('array', function() {
             var result = [...a, ...b]
             expect(result).to.eql([1,2,3,4])
         })
+        // it('should concat with +', function(){
+        //     var a =[1,2]
+        //     var b=[3,4]
+        //     var result = a + b
+        //     expect(result).to.eql([1,2,3,4])
+        // })
+        it('can change let', function(){
+            const a = [1]
+            a.push(2)
+            expect(a).to.eql([1,2])
+        })
     })
 })

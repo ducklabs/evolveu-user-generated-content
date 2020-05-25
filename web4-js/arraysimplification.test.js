@@ -27,7 +27,7 @@ describe('array simplification', function(){
     })
     describe('find', function(){
         it('can find the first match', function(){
-            var foo = [7,11,3,8]
+            var foo = [7,11,3,8,2]
 
             var result = foo.find(function(a){return a < 5})
             expect(result).to.eql(3)

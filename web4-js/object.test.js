@@ -8,9 +8,9 @@ describe('json', function() {
             expect(foo).to.eql({})
         })
         it ('should be able to create and retrieve an attribute', function(){
-            const foo = {a: 7}
+            const foo = {['an attribute']: 7}
 
-            expect(foo.a).to.equal(7)
+            expect(foo['an attribute']).to.equal(7)
         })
         it('should be able to add and retrieve an attribute', function(){
             const foo = {}
@@ -53,10 +53,18 @@ describe('json', function() {
     })
 
     describe('functions as entries', function(){
+        it('should be able to put a functoin in an object', function(){
+            const myFunction = function(x) {return x*2;}
+            const foo = {
+                do: myFunction
+            }
+            expect(foo.do(3)).to.equal(6)
+        })
         it('should be able to put a function in an object', function(){
             const foo = {
                 do: function(x){return 2*x},
-                dotoo: (x) => {return 2*x}}
+                dotoo: x => 2*x
+            }
 
             expect(foo.do(3)).to.equal(6)
             expect((foo.dotoo(4))).to.equal(8)
@@ -74,15 +82,17 @@ describe('json', function() {
     describe('object functios', function(){
         it('object.keys should be able to get array of the keys', function(){
             var foo = {foo: 1, ['foo too']: 2}
+            foo[3] = 3
 
             var result = Object.keys(foo)
-            expect(result).to.eql(['foo', 'foo too'])
+            expect(result).to.eql(['3', 'foo', 'foo too'])
         })
         it('object.values should be able to get any array of the values', function(){
             var foo = {foo: 1, ['foo too']: 2}
+            foo[3] = 3
 
             var result = Object.values(foo)
-            expect(result).to.eql([1,2])
+            expect(result).to.eql([3, 1,2])
         })
     })
 
@@ -106,7 +116,7 @@ describe('json', function() {
         it('should be able to json parse into an object', function(){
             const foo = '{"x":1}'
             const result = JSON.parse(foo)
-            expect(result).to.eql({x:1})
+            expect(result).to.eql({x: 1})
         })
     })
 
