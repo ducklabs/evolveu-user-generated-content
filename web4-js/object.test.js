@@ -62,7 +62,9 @@ describe('json', function() {
             expect((foo.dotoo(4))).to.equal(8)
         })
         it('should be able to put functions in arrays too', function(){
-            const foo = [function(x){return 2*x}, (x)=>{return 2*x}]
+            const foo = [
+                function(x){return 2*x}, 
+                (x)=>{return 2*x}]
 
             expect(foo[0](2)).to.equal(4)
             expect(foo[1](3)).to.equal(6)
@@ -81,6 +83,16 @@ describe('json', function() {
 
             var result = Object.values(foo)
             expect(result).to.eql([1,2])
+        })
+    })
+
+    describe('spread {...}', function(){
+        it('should be able to spread to make a copy with a new attribute', function(){
+            var foo = {x: 1}
+            
+            var value = {...foo, y: 2}
+            expect(value).to.eql({x: 1, y:2})
+            expect(foo).to.eql({x: 1})
         })
     })
 
