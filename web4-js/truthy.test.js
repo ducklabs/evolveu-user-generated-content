@@ -1,6 +1,14 @@
 var {expect, assert} = require('chai')
 
 describe('truthy/falsey', function() {
+    describe('== vs ===', function(){
+        it('null == undefined', function(){
+            var foo
+            var fu = null
+            expect(foo == fu).to.be.true
+            expect(foo === fu).to.be.false
+        })
+    })
     describe('things that are falsy', function(){
         it('undefined is falsey', function(){
             var foo
@@ -23,6 +31,12 @@ describe('truthy/falsey', function() {
         it  ('expect {} is not folsy', function(){
             var foo = {}
             expect(!!foo).to.be.true
+            expect(foo==false).to.be.false
+        })
+        it  ('expect [] is not folsy', function(){
+            var foo = []
+            expect(!!foo).to.be.true
+            expect(foo==false).to.be.true                   // here's one
         })
     })
 
@@ -73,12 +87,11 @@ describe('truthy/falsey', function() {
                 result = 'two'
             expect(result).to.equal('one')              // 0 is falsy!
         })
-        it('can be tricky with []', function(){
-            var f = []
-            var result = 'one'
-            if (f)
-                result = 'two'
-            expect(result).to.equal('two')              // [] are falsy but not falsy enough?
-        })
+    })
+
+    describe('things can be weird', function(){
+        expect(null == false).to.be.false
+        expect(!!null == false).to.be.true
+        expect((null || 3) == (false ||3)).to.be.true
     })
 })
