@@ -1,6 +1,6 @@
 const express = require('express')
 const setupV2Routes = require('./setupV2Routes')
-const database = require('../database/inMongo')
+const database = require('../database/inMemory')
 
 const Router = express.Router
 
