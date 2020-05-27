@@ -1,8 +1,6 @@
 const express = require('express')
-
-
 const bodyParser = require('body-parser')
-const database = require('../database')
+const database = require('../database/inMemory')
 
 const setupV2Routes = (apiRouter) => {
     // Controller Functions

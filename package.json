@@ -6,6 +6,8 @@
   "scripts": {
     "test": "npm run test:server",
     "start": "npm run start:server",
+    "install": "npm run install:server",
+    "install:server": "cd server && npm install && cd ..",
     "test:server": "cd server && npm test && cd ..",
     "start:server": "cd server && npm start"
   },

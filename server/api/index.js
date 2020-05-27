@@ -1,10 +1,8 @@
 const express = require('express')
-
-const setupV2Routes = require('./setupv2Routes')
+const setupV2Routes = require('./setupV2Routes')
+const database = require('../database/inMemory')
 
 const Router = express.Router
-
-const database = require('../database')
 
 const setupV1Routes = (apiRouter) => {
 
