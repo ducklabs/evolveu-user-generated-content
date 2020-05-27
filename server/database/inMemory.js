@@ -1,28 +1,36 @@
-const seedMessage = {
-  messageText: 'Your very first message',
-  author: 'Anonymous',
-  messageDate: new Date().toISOString().substring(0, 10),
-}
+let content = []
 
-let content = [seedMessage]
+function clear() {
+  content=[]
+  return Promise.resolve()
+}
 
 function addPost(newContent) {
-  content.push(newContent)
+  let addedPost = { ...newContent, id: content.length}
+  content.push(addedPost)
+  return Promise.resolve(addedPost)
 }
 
-function updatePost(newContent) {
-  const messageToUpdate = content.find((c) => c.uid == newContent.uid)
-  if (messageToUpdate) {
-    messageToUpdate.messageText = newContent.messageText
+function updatePost(messageWithNewContent) {
+  if (messageWithNewContent.id === undefined) {
+    throw new Error('Cannot update a message that is not in the database!')
   }
+  content[messageWithNewContent.id] = { ...messageWithNewContent }
+  return Promise.resolve()
 }
 
 function findAllPosts() {
-  return content.slice()
+  return Promise.resolve(content.slice())
+}
+
+function close() {
+  return Promise.resolve()
 }
 
 module.exports = {
+  clear,
   addPost,
   findAllPosts,
-  updatePost
+  updatePost,
+  close
 }

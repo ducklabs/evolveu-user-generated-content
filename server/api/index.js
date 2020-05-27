@@ -1,6 +1,6 @@
 const express = require('express')
 const setupV2Routes = require('./setupV2Routes')
-const database = require('../database/inMemory')
+const database = require('../database/inMongo')
 
 const Router = express.Router
 
@@ -8,14 +8,15 @@ const setupV1Routes = (apiRouter) => {
 
   // Controller Functions
   function findAllPosts(request, response) {
-    let allPosts = database.findAllPosts()
-    response.send(allPosts)
+    database.findAllPosts()
+      .then((posts) => response.send(posts))
+      .catch((error) => response.send(error))
   }
 
   function addNewPost(request, response) {
-    console.log('saving post', request.body)
     database.addPost(request.body)
-    response.sendStatus(200)
+    .then(() => response.sendStatus(200))
+    .catch((error) => response.send(error))
   }
 
   // Routing
