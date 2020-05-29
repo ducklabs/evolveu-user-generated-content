@@ -45,7 +45,10 @@ function checkUserNameAndPassword(username, password) {
     const { password, ...userWithoutPassword } = user; // Rest operator - Takes the rest of the user object besides password.
     return userWithoutPassword;
   }
+}
 
+function getUserById(userId) {
+  return users.find(u => u.id === userId);
 }
 
 module.exports = {
@@ -54,5 +57,6 @@ module.exports = {
   findAllPosts,
   updatePost,
   close,
-  checkUserNameAndPassword
+  checkUserNameAndPassword,
+  getUserById
 }

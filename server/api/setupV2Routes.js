@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const database = require('../database/inMemory')
+const jwt = require('jsonwebtoken')
+const SUPER_SECRET_PASSPHRASE = 'SUPER_SECRET_PASSPHRASEdfjklasjfklasdjl' // process.env.SUPER_SECRET_PASSPHRASE //THIS NEEDS TO GO INTO CONFIG
 
 const setupV2Routes = (apiRouter) => {
     // Controller Functions
@@ -52,14 +54,53 @@ const setupV2Routes = (apiRouter) => {
         }
     }
 
+
+    function jwtAuth(request, response, next) {
+        // check for jwt auth header
+        const noAuth = !request.headers.authorization
+        if (noAuth || request.headers.authorization.indexOf('Bearer ') === -1) {
+            return response.status(401).json({ message: 'Missing Authorization Header' });
+        }
+
+        // pull out the jwt
+        const token = request.headers.authorization.split(' ')[1];
+
+        // verify the jwt
+        const payload = jwt.verify(token, SUPER_SECRET_PASSPHRASE)
+        const user = database.getUserById(payload.userId)
+        if (user) {
+            request.user = user
+            return next()
+        } else {
+            return response.status(401).json({ message: 'JWT Authentication failed: Invalid username or password.' });
+        }
+    }
+
+    function createJWT(request, response) {
+        // create a JWT and send it back
+        const payload = { userId: request.user.id }
+
+        const token = jwt.sign(payload, SUPER_SECRET_PASSPHRASE, {
+            expiresIn: 1440 // expires in 24 hours
+        })
+
+        return response.json({
+            message: 'login success',
+            token: token
+        })
+
+    }
+
+
     // Middleware
     const textParser = bodyParser.json()
 
     // Routing
     const router = express.Router()
     router.get('/posts', findAllPosts)
-    router.post('/addPost', basicAuth, addNewPost)
+    router.post('/addPost', jwtAuth, addNewPost)
     router.post('/updatePost', textParser, updatePost)
+    router.post('/login', basicAuth, createJWT)
 
     apiRouter.use('/v2', router)
 };

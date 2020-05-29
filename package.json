@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/ducklabs/evolveu-user-generated-content#readme",
   "dependencies": {
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "mocha": "^7.2.0"
