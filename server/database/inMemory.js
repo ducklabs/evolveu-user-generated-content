@@ -1,12 +1,20 @@
 let content = []
+let users = [{
+  id: 1,
+  firstName: 'john',
+  lastName: 'doe',
+  email: 'john@doe.com',
+  username: 'username',
+  password: 'password' // Plain text password. VERY BAD. NEVER DO THIS.
+}]
 
 function clear() {
-  content=[]
+  content = []
   return Promise.resolve()
 }
 
 function addPost(newContent) {
-  let addedPost = { ...newContent, id: content.length}
+  let addedPost = { ...newContent, id: content.length }
   content.push(addedPost)
   return Promise.resolve(addedPost)
 }
@@ -27,10 +35,24 @@ function close() {
   return Promise.resolve()
 }
 
+function checkUserNameAndPassword(username, password) {
+  // find the user
+  const user = users.find(u => u.username === username);
+
+  // check if the password is good
+  let passwordIsCorrect = user && user.password === password;
+  if (passwordIsCorrect) {
+    const { password, ...userWithoutPassword } = user; // Rest operator - Takes the rest of the user object besides password.
+    return userWithoutPassword;
+  }
+
+}
+
 module.exports = {
   clear,
   addPost,
   findAllPosts,
   updatePost,
-  close
+  close,
+  checkUserNameAndPassword
 }
