@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const database = require('../database/inMemory')
 const jwt = require('jsonwebtoken')
-const SUPER_SECRET_PASSPHRASE = 'SUPER_SECRET_PASSPHRASEdfjklasjfklasdjl' // process.env.SUPER_SECRET_PASSPHRASE //THIS NEEDS TO GO INTO CONFIG
+const SUPER_SECRET_PASSPHRASE = process.env.SUPER_SECRET_PASSPHRASE //THIS NEEDS TO GO INTO CONFIG
 
 const setupV2Routes = (apiRouter) => {
     // Controller Functions

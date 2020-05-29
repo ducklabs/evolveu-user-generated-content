@@ -1,3 +1,6 @@
+// add dotenv
+require('dotenv').config()
+
 const express = require('express')
 const api = require('./api')
 
