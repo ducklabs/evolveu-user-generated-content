@@ -4,11 +4,15 @@ const api = require('./api')
 const app = express()
 
 app.use(express.json())
+
+// api
 app.use('/api', api)
-app.use('/', express.static('../web1'))
-app.use('/day2', express.static('../web2'))
-app.use('/projectIdeas', express.static('../web-projectIdeas'))
-app.use('/day3', express.static('../web3'))
+
+// files served statically
+app.use('/', express.static(__dirname + '/../web1'))
+app.use('/day2', express.static(__dirname + '/../web2'))
+app.use('/projectIdeas', express.static(__dirname + '/../web-projectIdeas'))
+app.use('/day3', express.static(__dirname + '/../web3'))
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Server listening at ${port}`))
